@@ -1,0 +1,10 @@
+csv_path: 'addrs.csv'
+from_name: 'ほげ'
+subject: 'Test.テスト。'
+gmail_addr: 'hoge@gmail.com'
+gmail_opts:
+  oauth2:
+    client_id: ''
+    client_secret: ''
+    refresh_token: ''
+    grant_type: 'refresh_token'
