@@ -1,3 +1,4 @@
+tmpl_path: 'mail.txt'
 csv_path: 'addrs.csv'
 from_name: 'ほげ'
 subject: 'Test.テスト。'
