@@ -46,12 +46,12 @@ mails = CSV.read(csv_path).map do |row|
 end
 
 access_token = refresh_access_token(oauth2)
-size = Parallel.processor_count
+size = Parallel.processor_count * 10
 connection_pool = ConnectionPool.new(size: size, timeout: 5.0) do
   Gmail.connect!(:xoauth2, gmail_addr, access_token)
 end
 
-Parallel.each(mails) do |mail|
+Parallel.each(mails, in_threads: size) do |mail|
   connection_pool.with do |gmail|
     Retryable.retryable(tries: 10) do
       gmail.deliver!(mail)
